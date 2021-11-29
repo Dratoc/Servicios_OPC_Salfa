@@ -21,8 +21,8 @@ namespace CatalogSalfa.Controllers
         [HttpGet]
         public Task<Token> GetToken()
         {
-            var items = service.GetTokenAsync();
-            return items;
+            var token = service.GetTokenAsync();
+            return token;
         }
 
     }
