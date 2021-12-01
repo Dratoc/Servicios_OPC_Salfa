@@ -8,9 +8,10 @@ namespace CatalogSalfa.Services
     public class TokenService : IToken
     {
         private readonly string url = "https://primavera.oraclecloud.com/primediscovery/apitoken/request?scope=http://primavera.oraclecloud.com/api";
-        private static HttpClient client = new HttpClient();
+        //private static HttpClient client = new HttpClient();
         public async Task<Token> GetTokenAsync()
         {
+            HttpClient client = new HttpClient();
             Token token = new Token();
             client.DefaultRequestHeaders.Add("Authorization", "Basic TVNJTFZBQFNBTEZBTU9OVEFKRVMuQ09NOlNhbGZhbW9udGFqZXMyMDIyLg==");
             var data = new StringContent("", Encoding.UTF8, "application/json");

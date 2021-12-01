@@ -1,4 +1,3 @@
-using System.Text;
 using System.Text.Json;
 using CatalogSalfa.Entities;
 using CatalogSalfa.ServicesInterfaces;
@@ -6,33 +5,34 @@ using CatalogSalfa.ServicesInterfaces;
 namespace CatalogSalfa.Services
 {
 
-    public class WorkspaceService : IWorkspace
+    public class WorkManagerTaskService : IWorkManagerTask
     {
-        private readonly string url = "https://primavera.oraclecloud.com/api/restapi/workspace";
+        private static string url = "https://primavera.oraclecloud.com/api/restapi/workManagerTask/project/";
 
-        public async Task<List<Workspace>> GetWorkspaceAsync()
+        public async Task<List<WorkManagerTask>> GetWorkManagerTasksAsync()
         {
-            List<Workspace> workspace = new List<Workspace>();
-            HttpClient client = new HttpClient();
+
+            List<WorkManagerTask> listWorkManagerTask = new List<WorkManagerTask>();
+
             TokenService tokenService = new TokenService();
             var token = await tokenService.GetTokenAsync();
+
+            HttpClient client = new HttpClient();
 
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
             client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
             client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            //client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
-            //var data = new StringContent("", Encoding.UTF8, "application/json");
 
-            var response = await client.GetAsync(url);
+            var response = await client.GetAsync(url + 50101);
 
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                workspace = JsonSerializer.Deserialize<List<Workspace>>(json);
+                listWorkManagerTask = JsonSerializer.Deserialize<List<WorkManagerTask>>(json);
             }
 
-            return workspace;
+            return listWorkManagerTask;
         }
     }
 }
