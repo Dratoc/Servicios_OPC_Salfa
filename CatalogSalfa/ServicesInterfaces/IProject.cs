@@ -4,6 +4,6 @@ namespace CatalogSalfa.ServicesInterfaces
 {
     public interface IProject
     {
-        Task<List<Project>> GetProjectsAsync();
+        Task<List<Project>> GetProjectsAsync(string ProjectCode);
     }
 }

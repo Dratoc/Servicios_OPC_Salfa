@@ -14,7 +14,7 @@ namespace CatalogSalfa.Entities
         public int? numberValue { get; set; }
     }
 
-    public class TaskConstraint
+    public class TaskConstraintWorkManagerTask
     {
         public int workManagerTaskId { get; set; }
         public int constraintId { get; set; }
@@ -70,7 +70,7 @@ namespace CatalogSalfa.Entities
         public DateTime? completedDate { get; set; }
         public DateTime? latestCommitmentDueDate { get; set; }
         public DateTime? originalCommitmentDueDate { get; set; }
-        public List<TaskConstraint> taskConstraints { get; set; }
+        public List<TaskConstraintWorkManagerTask> taskConstraints { get; set; }
     }
 
 

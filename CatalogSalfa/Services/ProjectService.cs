@@ -9,7 +9,7 @@ namespace CatalogSalfa.Services
 
         private static string url = "https://primavera.oraclecloud.com/api/restapi/project/code/";
 
-        public async Task<List<Project>> GetProjectsAsync()
+        public async Task<List<Project>> GetProjectsAsync(string ProjectCode)
         {
 
             HttpClient client = new HttpClient();
@@ -22,7 +22,7 @@ namespace CatalogSalfa.Services
             client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-            var response = await client.GetAsync(url + "10021071-TS-0001");
+            var response = await client.GetAsync(url + ProjectCode);
 
             List<Project> listProjects = new List<Project>();
 

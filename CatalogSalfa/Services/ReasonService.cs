@@ -5,17 +5,17 @@ using CatalogSalfa.ServicesInterfaces;
 namespace CatalogSalfa.Services
 {
 
-    public class WorkManagerTaskService : IWorkManagerTask
+    public class ReasonService : IReason
     {
-        private static string url = "https://primavera.oraclecloud.com/api/restapi/workManagerTask/project/";
+        private static string url = "https://primavera.oraclecloud.com/api/restapi/reason/workspace/";
 
-        public async Task<List<WorkManagerTask>> GetWorkManagerTasksAsync(int projectId)
+        public async Task<List<Reason>> GetReasonAsync(int workspaceId)
         {
 
-            List<WorkManagerTask> listWorkManagerTask = new List<WorkManagerTask>();
+            List<Reason> listReason = new List<Reason>();
 
-            TokenService tokenService = new TokenService();
-            var token = await tokenService.GetTokenAsync();
+            TokenService service = new TokenService();
+            var token = await service.GetTokenAsync();
 
             HttpClient client = new HttpClient();
 
@@ -24,15 +24,17 @@ namespace CatalogSalfa.Services
             client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-            var response = await client.GetAsync(url + projectId);
+            var response = await client.GetAsync(url + workspaceId);
 
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                listWorkManagerTask = JsonSerializer.Deserialize<List<WorkManagerTask>>(json);
+                listReason = JsonSerializer.Deserialize<List<Reason>>(json);
             }
 
-            return listWorkManagerTask;
+            return listReason;
+
         }
+
     }
 }

@@ -4,21 +4,18 @@ using CatalogSalfa.ServicesInterfaces;
 
 namespace CatalogSalfa.Services
 {
-
-    public class WorkManagerTaskService : IWorkManagerTask
+    public class ConstraintService : IConstraint
     {
-        private static string url = "https://primavera.oraclecloud.com/api/restapi/workManagerTask/project/";
+        private static string url = "https://primavera.oraclecloud.com/api/restapi/constraint/project/";
 
-        public async Task<List<WorkManagerTask>> GetWorkManagerTasksAsync(int projectId)
+        public async Task<List<Constraint>> GetConstraintsAsync(int projectId)
         {
+            List<Constraint> listConstraint = new List<Constraint>();
 
-            List<WorkManagerTask> listWorkManagerTask = new List<WorkManagerTask>();
-
-            TokenService tokenService = new TokenService();
-            var token = await tokenService.GetTokenAsync();
+            TokenService service = new TokenService();
+            var token = await service.GetTokenAsync();
 
             HttpClient client = new HttpClient();
-
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
             client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
             client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
@@ -29,10 +26,12 @@ namespace CatalogSalfa.Services
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                listWorkManagerTask = JsonSerializer.Deserialize<List<WorkManagerTask>>(json);
+                listConstraint = JsonSerializer.Deserialize<List<Constraint>>(json);
+
             }
 
-            return listWorkManagerTask;
+            return listConstraint;
+
         }
     }
 }

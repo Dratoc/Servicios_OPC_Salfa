@@ -12,6 +12,10 @@ builder.Services.AddSingleton<IWorkspace, WorkspaceService>();
 builder.Services.AddSingleton<IActivity, ActivityService>();
 builder.Services.AddSingleton<IProject, ProjectService>();
 builder.Services.AddSingleton<IWorkManagerTask, WorkManagerTaskService>();
+builder.Services.AddSingleton<IUser, UserService>();
+builder.Services.AddSingleton<IReason, ReasonService>();
+builder.Services.AddSingleton<IConstraint, ConstraintService>();
+builder.Services.AddSingleton<IReporteOPC_WM, ReporteOPC_WMService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

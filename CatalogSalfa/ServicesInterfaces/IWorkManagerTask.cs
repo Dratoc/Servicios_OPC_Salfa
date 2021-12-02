@@ -4,6 +4,6 @@ namespace CatalogSalfa.ServicesInterfaces
 {
     public interface IWorkManagerTask
     {
-        Task<List<WorkManagerTask>> GetWorkManagerTasksAsync();
+        Task<List<WorkManagerTask>> GetWorkManagerTasksAsync(int projectId);
     }
 }

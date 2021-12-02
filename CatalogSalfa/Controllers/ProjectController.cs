@@ -15,11 +15,11 @@ namespace CatalogSalfa.Controllers
             this.service = service;
         }
 
-        [HttpGet]
-        public Task<List<Project>> ProjectsAsync()
+        [HttpGet("{code}")]
+        public Task<List<Project>> ProjectsAsync(string code)
         {
 
-            var projects = service.GetProjectsAsync();
+            var projects = service.GetProjectsAsync(code);
 
             return projects;
         }
