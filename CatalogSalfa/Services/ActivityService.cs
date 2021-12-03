@@ -32,6 +32,9 @@ namespace CatalogSalfa.Services
             {
                 var json = await response.Content.ReadAsStringAsync();
                 activity = JsonSerializer.Deserialize<Activity>(json);
+
+                var serializeOptions = new JsonSerializerOptions();
+
             }
 
             return activity;

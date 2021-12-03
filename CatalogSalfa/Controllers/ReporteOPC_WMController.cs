@@ -20,6 +20,7 @@ namespace CatalogSalfa.Controllers
         public Task<ReporteOPC_WM> GetReporteOPC_WM(string code)
         {
             var reporte = service.GetReporteOPC_WMs(code);
+
             return reporte;
         }
 

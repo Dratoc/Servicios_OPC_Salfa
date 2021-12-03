@@ -71,6 +71,20 @@ namespace CatalogSalfa.Entities
         public DateTime? latestCommitmentDueDate { get; set; }
         public DateTime? originalCommitmentDueDate { get; set; }
         public List<TaskConstraintWorkManagerTask> taskConstraints { get; set; }
+
+        public static implicit operator WorkManagerTask(List<WorkManagerTask> v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static implicit operator Task<object>(WorkManagerTask v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User user { get; set; }
+        public Activity activity { get; set; }
+
     }
 
 

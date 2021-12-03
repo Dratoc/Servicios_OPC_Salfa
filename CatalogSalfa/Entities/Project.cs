@@ -95,6 +95,8 @@ namespace CatalogSalfa.Entities
         public int recordCount { get; set; }
         public int managerId { get; set; }
         public DateTime updateDate { get; set; }
+        public List<WorkManagerTask> workManagerTask { get; set; }
+        public List<Constraint> constraint { get; set; }
     }
 
 
