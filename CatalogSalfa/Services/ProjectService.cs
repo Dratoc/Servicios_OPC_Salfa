@@ -12,28 +12,35 @@ namespace CatalogSalfa.Services
 
         public async Task<List<Project>> GetProjectsAsync(string ProjectCode)
         {
-
-            HttpClient client = new HttpClient();
-
-            TokenService tokenService = new TokenService();
-            var token = await tokenService.GetTokenAsync();
-
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
-            client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
-            client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-            var response = await client.GetAsync(url + ProjectCode);
-
             List<Project> listProjects = new List<Project>();
 
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json = await response.Content.ReadAsStringAsync();
-                listProjects = JsonSerializer.Deserialize<List<Project>>(json);
+                HttpClient client = new HttpClient();
+
+                TokenService tokenService = new TokenService();
+                var token = await tokenService.GetTokenAsync();
+
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
+                client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
+                client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                var response = await client.GetAsync(url + ProjectCode);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    listProjects = JsonSerializer.Deserialize<List<Project>>(json);
+                }
+
+                return listProjects;
+            }
+            catch (System.Exception)
+            {
+                return listProjects;
             }
 
-            return listProjects;
         }
 
     }

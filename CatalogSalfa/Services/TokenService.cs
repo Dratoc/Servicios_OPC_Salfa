@@ -11,20 +11,30 @@ namespace CatalogSalfa.Services
         //private static HttpClient client = new HttpClient();
         public async Task<Token> GetTokenAsync()
         {
-            HttpClient client = new HttpClient();
             Token token = new Token();
-            client.DefaultRequestHeaders.Add("Authorization", "Basic TVNJTFZBQFNBTEZBTU9OVEFKRVMuQ09NOlNhbGZhbW9udGFqZXMyMDIyLg==");
-            var data = new StringContent("", Encoding.UTF8, "application/json");
-
-            var response = await client.PostAsync(url, data);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json = await response.Content.ReadAsStringAsync();
-                token = JsonSerializer.Deserialize<Token>(json);
+                HttpClient client = new HttpClient();
+
+                client.DefaultRequestHeaders.Add("Authorization", "Basic TVNJTFZBQFNBTEZBTU9OVEFKRVMuQ09NOlNhbGZhbW9udGFqZXMyMDIyLg==");
+                var data = new StringContent("", Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(url, data);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    token = JsonSerializer.Deserialize<Token>(json);
+                }
+
+                return token;
+            }
+            catch (System.Exception)
+            {
+
+                return token;
             }
 
-            return token;
         }
     }
 }

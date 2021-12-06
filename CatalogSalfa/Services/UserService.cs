@@ -14,24 +14,32 @@ namespace CatalogSalfa.Services
         {
             User user = new User();
 
-            TokenService service = new TokenService();
-            var token = await service.GetTokenAsync();
-
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
-            client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
-            client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-            var response = await client.GetAsync(url + userId);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json = await response.Content.ReadAsStringAsync();
-                user = JsonSerializer.Deserialize<User>(json);
+                TokenService service = new TokenService();
+                var token = await service.GetTokenAsync();
+
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
+                client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
+                client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                var response = await client.GetAsync(url + userId);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    user = JsonSerializer.Deserialize<User>(json);
+                }
+
+                return user;
+            }
+            catch (System.Exception)
+            {
+                return user;
             }
 
-            return user;
 
         }
     }
