@@ -1,0 +1,11 @@
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\CatalogSalfa.exe
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\appsettings.Development.json
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\appsettings.json
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\CatalogSalfa.dll
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\CatalogSalfa.deps.json
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\CatalogSalfa.runtimeconfig.json
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\CatalogSalfa.pdb
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\Microsoft.OpenApi.dll
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Metacontrol\Salfa\Servicios_OPC_Salfa\CatalogSalfa\bin\Debug\net6.0\publish\Swashbuckle.AspNetCore.SwaggerUI.dll

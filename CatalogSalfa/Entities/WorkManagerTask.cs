@@ -1,33 +1,24 @@
 namespace CatalogSalfa.Entities
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-    public class ConfiguredFieldWorkManagerTask
+    public class ConfiguredField
     {
-        public string columnName { get; set; }
-        public int columnDefinitionId { get; set; }
         public int workManagerTaskConfiguredFieldValueId { get; set; }
+        public string columnName { get; set; }
+        public int numberValue { get; set; }
+        public int columnDefinitionId { get; set; }
         public string columnLabel { get; set; }
-        public string textValue { get; set; }
         public int workManagerTaskId { get; set; }
         public bool hasException { get; set; }
         public DateTime updateDate { get; set; }
-        public int? numberValue { get; set; }
-    }
-
-    public class TaskConstraintWorkManagerTask
-    {
-        public int workManagerTaskId { get; set; }
-        public int constraintId { get; set; }
-        public int taskConstraintId { get; set; }
-        public DateTime updateDate { get; set; }
+        public string textValue { get; set; }
     }
 
     public class WorkManagerTask
     {
         public string workManagerTaskName { get; set; }
         public bool favorite { get; set; }
-        public string companyPostalCode { get; set; }
-        public string projectCompanyColor { get; set; }
+        //public string companyPostalCode { get; set; }
+        //public string projectCompanyColor { get; set; }
         public int sequenceNumber { get; set; }
         public string type { get; set; }
         public int userId { get; set; }
@@ -42,13 +33,14 @@ namespace CatalogSalfa.Entities
         public int activityId { get; set; }
         public string itemCode { get; set; }
         public string visibility { get; set; }
-        public int itemSuffix { get; set; }
         public string itemPrefix { get; set; }
+        public int itemSuffix { get; set; }
         public int workManagerTaskId { get; set; }
-        public int projectCompanyId { get; set; }
         public double durationHours { get; set; }
         public DateTime tentativeDate { get; set; }
         public bool useCalendar { get; set; }
+        public DateTime latestCommitmentDueDate { get; set; }
+        public DateTime originalCommitmentDueDate { get; set; }
         public string activityDateStatus { get; set; }
         public string activityCompleteStatus { get; set; }
         public int commitmentCount { get; set; }
@@ -65,27 +57,15 @@ namespace CatalogSalfa.Entities
         public bool isSchNonWorkDays { get; set; }
         public bool isOverdue { get; set; }
         public bool hasProposedDueDate { get; set; }
-        public List<ConfiguredFieldWorkManagerTask> configuredFields { get; set; }
+        public int projectCompanyId { get; set; }
+        public List<ConfiguredField> configuredFields { get; set; }
         public DateTime updateDate { get; set; }
-        public DateTime? completedDate { get; set; }
-        public DateTime? latestCommitmentDueDate { get; set; }
-        public DateTime? originalCommitmentDueDate { get; set; }
-        public List<TaskConstraintWorkManagerTask> taskConstraints { get; set; }
-
-        public static implicit operator WorkManagerTask(List<WorkManagerTask> v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static implicit operator Task<object>(WorkManagerTask v)
-        {
-            throw new NotImplementedException();
-        }
-
+        public List<WorkManagerTaskCommitment> workManagerTaskCommitment { get; set; }
+        public List<Constraint> constraint { get; set; }
         public User user { get; set; }
-        public Activity activity { get; set; }
-
     }
+
+
 
 
 }

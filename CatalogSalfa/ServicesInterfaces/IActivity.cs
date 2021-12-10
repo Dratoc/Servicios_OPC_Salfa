@@ -4,6 +4,7 @@ namespace CatalogSalfa.ServicesInterfaces
 {
     public interface IActivity
     {
-        Task<Activity> GetActivityAsync(int activityId);
+        Task<List<Activity>> GetActivityAsync(int projectId);
+        Task<List<Activity>> GetActivityAsyncToken(int projectId, Token token);
     }
 }

@@ -1,6 +1,6 @@
 namespace CatalogSalfa.Entities
 {
-    public class UserSetting
+    /*    public class UserSetting
     {
         public string @namespace { get; set; }
         public string settingName { get; set; }
@@ -17,7 +17,7 @@ namespace CatalogSalfa.Entities
         public int userProductId { get; set; }
         public int applicationUserId { get; set; }
         public DateTime updateDate { get; set; }
-    }
+    }*/
 
     public class User
     {
@@ -30,8 +30,8 @@ namespace CatalogSalfa.Entities
         public string status { get; set; }
         public string ldapGuid { get; set; }
         public int companyId { get; set; }
-        public List<UserSetting> userSettings { get; set; }
-        public List<UserProduct> userProducts { get; set; }
+        //public List<UserSetting> userSettings { get; set; }
+        //public List<UserProduct> userProducts { get; set; }
         public bool isInspectionManager { get; set; }
         public bool receiveReports { get; set; }
     }

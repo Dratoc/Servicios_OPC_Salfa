@@ -1,8 +1,6 @@
 namespace CatalogSalfa.Entities
 {
-
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-    public class ConfiguredFieldProject
+    /*public class ConfiguredFieldProject
     {
         public string columnName { get; set; }
         public int projectConfiguredFieldValueId { get; set; }
@@ -23,7 +21,7 @@ namespace CatalogSalfa.Entities
         public string settingValue { get; set; }
         public int projectSettingId { get; set; }
         public DateTime updateDate { get; set; }
-    }
+    }*/
 
     public class ProjectFinancial
     {
@@ -41,7 +39,7 @@ namespace CatalogSalfa.Entities
         public DateTime updateDate { get; set; }
     }
 
-    public class ProjectAutoNumber
+    /*public class ProjectAutoNumber
     {
         public string prefix { get; set; }
         public string suffix { get; set; }
@@ -50,7 +48,7 @@ namespace CatalogSalfa.Entities
         public string area { get; set; }
         public int increment { get; set; }
         public DateTime updateDate { get; set; }
-    }
+    }*/
 
     public class Project
     {
@@ -60,43 +58,42 @@ namespace CatalogSalfa.Entities
         public string manager { get; set; }
         public string status { get; set; }
         public List<object> projectCashFlows { get; set; }
-        public List<ConfiguredFieldProject> configuredFields { get; set; }
+        //public List<ConfiguredFieldProject> configuredFields { get; set; }
         public int workspaceId { get; set; }
         public int projectId { get; set; }
-        public List<ProjectSetting> projectSettings { get; set; }
+        //public List<ProjectSetting> projectSettings { get; set; }
         public string dataDate { get; set; }
         public string projectCode { get; set; }
         public string startDate { get; set; }
         public string planStartDate { get; set; }
         public string planEndDate { get; set; }
         public string projectName { get; set; }
-        public bool isTemplateFlag { get; set; }
+        //public bool isTemplateFlag { get; set; }
         public string workspaceCode { get; set; }
-        public string projectTimeZone { get; set; }
+        //public string projectTimeZone { get; set; }
         public int calendarId { get; set; }
-        public ProjectFinancial projectFinancial { get; set; }
-        public int projectCurrency { get; set; }
+        //public ProjectFinancial projectFinancial { get; set; }
+        //public int projectCurrency { get; set; }
         public string projectIntegrationType { get; set; }
         public string percentCompleteWeightedBy { get; set; }
-        public string securityGuid { get; set; }
+        //public string securityGuid { get; set; }
         public string finishDate { get; set; }
-        public List<ProjectAutoNumber> projectAutoNumber { get; set; }
-        public int strgyPriorityNum { get; set; }
+        //public List<ProjectAutoNumber> projectAutoNumber { get; set; }
+        //public int strgyPriorityNum { get; set; }
         public List<object> codeValuesProject { get; set; }
         public double remainingDuration { get; set; }
         public DateTime remainingStartDate { get; set; }
         public DateTime remainingFinishDate { get; set; }
-        public bool linkForecastToSpend { get; set; }
-        public string plannedBudgetLinkType { get; set; }
-        public string forecastLinkType { get; set; }
-        public string actualLinkType { get; set; }
-        public string exchangeRateType { get; set; }
+        //public bool linkForecastToSpend { get; set; }
+        //public string plannedBudgetLinkType { get; set; }
+        //public string forecastLinkType { get; set; }
+        //public string actualLinkType { get; set; }
+        //public string exchangeRateType { get; set; }
         public string scheduledFinishDate { get; set; }
         public int recordCount { get; set; }
         public int managerId { get; set; }
         public DateTime updateDate { get; set; }
-        public List<WorkManagerTask> workManagerTask { get; set; }
-        public List<Constraint> constraint { get; set; }
+        public List<Activity> activities { get; set; }
     }
 
 

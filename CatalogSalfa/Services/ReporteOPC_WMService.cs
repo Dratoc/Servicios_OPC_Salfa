@@ -8,41 +8,47 @@ namespace CatalogSalfa.Services
     {
         public async Task<ReporteOPC_WM> GetReporteOPC_WMs(string code)
         {
+            TokenService service = new TokenService();
+            var token = await service.GetTokenAsync();
 
             ProjectService serviceProject = new ProjectService();
-            List<Project> projects = await serviceProject.GetProjectsAsync(code);
-            List<Reason> reason = new List<Reason>();
+            List<Project> projects = await serviceProject.GetProjectsAsyncToken(code, token);
 
             for (int i = 0; i < projects.Count; i++)
             {
-                WorkManagerTaskService serviceWorkManagerTask = new WorkManagerTaskService();
-                List<WorkManagerTask> workManagerTask = await serviceWorkManagerTask.GetWorkManagerTasksAsync(projects[i].projectId);
+                ActivityService activityService = new ActivityService();
+                List<Activity> activities = await activityService.GetActivityAsyncToken(projects[i].projectId, token);
+                projects[i].activities = activities;
 
-                ConstraintService serviceConstraint = new ConstraintService();
-                List<Constraint> constraint = await serviceConstraint.GetConstraintsAsync(projects[i].projectId);
-
-                ReasonService serviceReason = new ReasonService();
-                reason = await serviceReason.GetReasonAsync(projects[i].workspaceId);
-
-                for (int w = 0; w < workManagerTask.Count; w++)
+                for (int a = 0; a < activities.Count; a++)
                 {
-                    UserService userService = new UserService();
-                    User user = await userService.GetUserAsync(workManagerTask[w].userId);
-                    workManagerTask[w].user = user;
+                    WorkManagerTaskService serviceWorkManagerTask = new WorkManagerTaskService();
+                    List<WorkManagerTask> workManagerTask = await serviceWorkManagerTask.GetWorkManagerTasksAsyncToken(projects[i].projectId, activities[a].activityId, token);
 
-                    ActivityService activityService = new ActivityService();
-                    Activity activity = await activityService.GetActivityAsync(workManagerTask[w].activityId);
-                    workManagerTask[w].activity = activity;
+                    for (int w = 0; w < workManagerTask.Count; w++)
+                    {
+                        UserService userService = new UserService();
+                        User user = await userService.GetUserAsyncToken(workManagerTask[w].userId, token);
+                        workManagerTask[w].user = user;
+
+                        ConstraintService serviceConstraint = new ConstraintService();
+                        List<Constraint> constraint = await serviceConstraint.GetConstraintsAsyncToken(workManagerTask[w].workManagerTaskId, token);
+                        workManagerTask[w].constraint = constraint;
+
+                        WorkManagerTaskCommitmentService serviceWorkManagerTaskCommitment = new WorkManagerTaskCommitmentService();
+                        List<WorkManagerTaskCommitment> workManagerTaskCommitment = await serviceWorkManagerTaskCommitment.GetWorkManagerTaskCommitmentAsyncToken(workManagerTask[w].workManagerTaskId, token);
+                        workManagerTask[w].workManagerTaskCommitment = workManagerTaskCommitment;
+                    }
+
+                    activities[a].workManagerTask = workManagerTask;
                 }
 
-                projects[i].constraint = constraint;
-                projects[i].workManagerTask = workManagerTask;
+                projects[i].activities = activities;
             }
 
             ReporteOPC_WM reporte = new ReporteOPC_WM()
             {
-                projects = projects,
-                reason = reason
+                projects = projects
             };
 
             return reporte;

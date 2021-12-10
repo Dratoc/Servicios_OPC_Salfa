@@ -17,10 +17,10 @@ namespace CatalogSalfa.Controllers
         }
 
         //GET /workManagerTask 
-        [HttpGet("projectId")]
-        public Task<List<WorkManagerTask>> GetWorkManagerTasks(int projectId)
+        [HttpGet("{projectId}/{activityId}")]
+        public Task<List<WorkManagerTask>> GetWorkManagerTasks(int projectId, int activityId)
         {
-            var workManagerTask = service.GetWorkManagerTasksAsync(projectId);
+            var workManagerTask = service.GetWorkManagerTasksAsync(projectId, activityId);
             return workManagerTask;
         }
 

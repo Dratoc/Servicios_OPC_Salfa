@@ -18,10 +18,10 @@ namespace CatalogSalfa.Controllers
         }
 
         //Get /activities
-        [HttpGet("activityId")]
-        public Task<Activity> GetActivity(int activityId)
+        [HttpGet("projectId")]
+        public Task<List<Activity>> GetActivity(int projectId)
         {
-            var activity = service.GetActivityAsync(activityId);
+            var activity = service.GetActivityAsync(projectId);
             return activity;
         }
 

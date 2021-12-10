@@ -40,6 +40,35 @@ namespace CatalogSalfa.Services
                 return user;
             }
 
+        }
+
+        public async Task<User> GetUserAsyncToken(int userId, Token token)
+        {
+            User user = new User();
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.accessToken);
+                client.DefaultRequestHeaders.Add("x-prime-tenant", token.primeTenant);
+                client.DefaultRequestHeaders.Add("x-prime-identity-app", token.primeIdentityApp);
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                var response = await client.GetAsync(url + userId);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    user = JsonSerializer.Deserialize<User>(json);
+                }
+
+                return user;
+            }
+            catch (System.Exception)
+            {
+                return user;
+            }
+
 
         }
     }
