@@ -57,7 +57,7 @@ namespace CatalogSalfa.Entities
         public int sequenceNumber { get; set; }
         public string manager { get; set; }
         public string status { get; set; }
-        public List<object> projectCashFlows { get; set; }
+        //public List<object> projectCashFlows { get; set; }
         //public List<ConfiguredFieldProject> configuredFields { get; set; }
         public int workspaceId { get; set; }
         public int projectId { get; set; }
@@ -80,7 +80,7 @@ namespace CatalogSalfa.Entities
         public string finishDate { get; set; }
         //public List<ProjectAutoNumber> projectAutoNumber { get; set; }
         //public int strgyPriorityNum { get; set; }
-        public List<object> codeValuesProject { get; set; }
+        //public List<object> codeValuesProject { get; set; }
         public double remainingDuration { get; set; }
         public DateTime remainingStartDate { get; set; }
         public DateTime remainingFinishDate { get; set; }

@@ -19,9 +19,16 @@ namespace CatalogSalfa.Controllers
         [HttpGet("code")]
         public Task<ReporteOPC_WM> GetReporteOPC_WM(string code)
         {
-            var reporte = service.GetReporteOPC_WMs(code);
+            try
+            {
+                var reporte = service.GetReporteOPC_WMs(code);
 
-            return reporte;
+                return reporte;
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
         }
 
     }

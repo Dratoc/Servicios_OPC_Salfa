@@ -1,5 +1,6 @@
 namespace CatalogSalfa.Entities
 {
+
     public class ActivityFinancial
     {
         public int project { get; set; }
@@ -102,14 +103,14 @@ namespace CatalogSalfa.Entities
         public int sequenceNumber { get; set; }
         public string owner { get; set; }
         public string constraintType { get; set; }
-        public List<object> configuredFields { get; set; }
+        //public List<object> configuredFields { get; set; }
         public int projectId { get; set; }
         public string projectCode { get; set; }
         public string startDate { get; set; }
         public int wbsId { get; set; }
         public string workspaceCode { get; set; }
         public int activityId { get; set; }
-        public List<object> activityUncertainties { get; set; }
+        //public List<object> activityUncertainties { get; set; }
         public string calendarName { get; set; }
         public string percentCompleteWeightedBy { get; set; }
         public double actualDuration { get; set; }
@@ -179,7 +180,7 @@ namespace CatalogSalfa.Entities
         public double estimateAtCompletionLaborUnits { get; set; }
         public int varianceAtCompletionLaborUnits { get; set; }
         public string activityCode { get; set; }
-        public List<object> codeValuesActivity { get; set; }
+        //public List<object> codeValuesActivity { get; set; }
         public DateTime updateDate { get; set; }
         public string finishDate { get; set; }
         public string plannedFinish { get; set; }

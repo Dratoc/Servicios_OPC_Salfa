@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\CatalogSalfa\\CatalogSalfa.csproj": {}
+    "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\catalogSalfa\\CatalogSalfa.csproj": {}
   },
   "projects": {
-    "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\CatalogSalfa\\CatalogSalfa.csproj": {
+    "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\catalogSalfa\\CatalogSalfa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\CatalogSalfa\\CatalogSalfa.csproj",
+        "projectUniqueName": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\catalogSalfa\\CatalogSalfa.csproj",
         "projectName": "CatalogSalfa",
-        "projectPath": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\CatalogSalfa\\CatalogSalfa.csproj",
+        "projectPath": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\catalogSalfa\\CatalogSalfa.csproj",
         "packagesPath": "C:\\Users\\herna\\.nuget\\packages\\",
-        "outputPath": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\CatalogSalfa\\obj\\",
+        "outputPath": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\catalogSalfa\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\herna\\AppData\\Roaming\\NuGet\\NuGet.Config"

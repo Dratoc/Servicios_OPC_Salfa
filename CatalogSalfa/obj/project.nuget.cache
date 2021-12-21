@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+dyWCl4CG3EsLshtCAWkYE1VEm26ujNCmrlBeuGCUoCt6cjrN+2stG4Ekdvre3j6x06tuZdZJWavntO1nQcskg==",
+  "dgSpecHash": "HsE5MU2jix2zsEn7AT3bkMyLBKzXf1eOKP3aRYNwQJ9+Aouhefbq2anM6+cijXUpdlf9Cs2B1257z9Ms40OFjw==",
   "success": true,
-  "projectFilePath": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\CatalogSalfa\\CatalogSalfa.csproj",
+  "projectFilePath": "C:\\Metacontrol\\Salfa\\Servicios_OPC_Salfa\\catalogSalfa\\CatalogSalfa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\herna\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\herna\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

@@ -17,7 +17,7 @@ namespace CatalogSalfa.Controllers
             this.service = service;
         }
 
-        //Get /activities
+        //Get /projectId
         [HttpGet("projectId")]
         public Task<List<Activity>> GetActivity(int projectId)
         {

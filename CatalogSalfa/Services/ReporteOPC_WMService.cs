@@ -8,50 +8,65 @@ namespace CatalogSalfa.Services
     {
         public async Task<ReporteOPC_WM> GetReporteOPC_WMs(string code)
         {
-            TokenService service = new TokenService();
-            var token = await service.GetTokenAsync();
-
-            ProjectService serviceProject = new ProjectService();
-            List<Project> projects = await serviceProject.GetProjectsAsyncToken(code, token);
-
-            for (int i = 0; i < projects.Count; i++)
+            try
             {
-                ActivityService activityService = new ActivityService();
-                List<Activity> activities = await activityService.GetActivityAsyncToken(projects[i].projectId, token);
-                projects[i].activities = activities;
+                TokenService service = new TokenService();
+                var token = await service.GetTokenAsync();
 
-                for (int a = 0; a < activities.Count; a++)
+                ProjectService serviceProject = new ProjectService();
+                List<Project> projects = await serviceProject.GetProjectsAsyncToken(code, token);
+
+                for (int i = 0; i < projects.Count; i++)
                 {
-                    WorkManagerTaskService serviceWorkManagerTask = new WorkManagerTaskService();
-                    List<WorkManagerTask> workManagerTask = await serviceWorkManagerTask.GetWorkManagerTasksAsyncToken(projects[i].projectId, activities[a].activityId, token);
+                    ActivityService activityService = new ActivityService();
+                    List<Activity> activities = await activityService.GetActivityAsyncToken(projects[i].projectId, token);
+                    projects[i].activities = activities;
 
-                    for (int w = 0; w < workManagerTask.Count; w++)
+                    for (int a = 0; a < activities.Count; a++)
                     {
-                        UserService userService = new UserService();
-                        User user = await userService.GetUserAsyncToken(workManagerTask[w].userId, token);
-                        workManagerTask[w].user = user;
+                        WorkManagerTaskService serviceWorkManagerTask = new WorkManagerTaskService();
+                        List<WorkManagerTask> workManagerTask = await serviceWorkManagerTask.GetWorkManagerTasksAsyncToken(projects[i].projectId, activities[a].activityId, token);
 
-                        ConstraintService serviceConstraint = new ConstraintService();
-                        List<Constraint> constraint = await serviceConstraint.GetConstraintsAsyncToken(workManagerTask[w].workManagerTaskId, token);
-                        workManagerTask[w].constraint = constraint;
+                        for (int w = 0; w < workManagerTask.Count; w++)
+                        {
+                            UserService userService = new UserService();
+                            User user = await userService.GetUserAsyncToken(workManagerTask[w].userId, token);
+                            workManagerTask[w].user = user;
 
-                        WorkManagerTaskCommitmentService serviceWorkManagerTaskCommitment = new WorkManagerTaskCommitmentService();
-                        List<WorkManagerTaskCommitment> workManagerTaskCommitment = await serviceWorkManagerTaskCommitment.GetWorkManagerTaskCommitmentAsyncToken(workManagerTask[w].workManagerTaskId, token);
-                        workManagerTask[w].workManagerTaskCommitment = workManagerTaskCommitment;
+                            ConstraintService serviceConstraint = new ConstraintService();
+                            List<Constraint> constraint = await serviceConstraint.GetConstraintsAsyncToken(workManagerTask[w].workManagerTaskId, token);
+                            workManagerTask[w].constraint = constraint;
+
+                            WorkManagerTaskCommitmentService serviceWorkManagerTaskCommitment = new WorkManagerTaskCommitmentService();
+                            List<WorkManagerTaskCommitment> workManagerTaskCommitment = await serviceWorkManagerTaskCommitment.GetWorkManagerTaskCommitmentAsyncToken(workManagerTask[w].workManagerTaskId, token);
+                            workManagerTask[w].workManagerTaskCommitment = workManagerTaskCommitment;
+                        }
+
+                        activities[a].workManagerTask = workManagerTask;
                     }
 
-                    activities[a].workManagerTask = workManagerTask;
+                    projects[i].activities = activities;
                 }
 
-                projects[i].activities = activities;
+                ReporteOPC_WM reporte = new ReporteOPC_WM()
+                {
+                    projects = projects
+                };
+
+                return reporte;
+            }
+            catch (System.Exception)
+            {
+                List<Project> projects = new List<Project>();
+
+                ReporteOPC_WM reporte = new ReporteOPC_WM()
+                {
+                    projects = projects
+                };
+
+                return reporte;
             }
 
-            ReporteOPC_WM reporte = new ReporteOPC_WM()
-            {
-                projects = projects
-            };
-
-            return reporte;
 
         }
     }

@@ -26,7 +26,7 @@ namespace CatalogSalfa.Entities
         public int project { get; set; }
         public string companyName { get; set; }
         public string projectCode { get; set; }
-        public List<object> codeValues { get; set; }
+        //public List<object> codeValues { get; set; }
         public DateTime startDate { get; set; }
         public string workspaceCode { get; set; }
         public bool overdue { get; set; }
