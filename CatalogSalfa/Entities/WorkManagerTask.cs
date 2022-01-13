@@ -58,11 +58,14 @@ namespace CatalogSalfa.Entities
         public bool isOverdue { get; set; }
         public bool hasProposedDueDate { get; set; }
         public int projectCompanyId { get; set; }
+        public String completedDate { get; set; }
         public List<ConfiguredField> configuredFields { get; set; }
         public DateTime updateDate { get; set; }
         public List<WorkManagerTaskCommitment> workManagerTaskCommitment { get; set; }
         public List<Constraint> constraint { get; set; }
         public User user { get; set; }
+
+
     }
 
 

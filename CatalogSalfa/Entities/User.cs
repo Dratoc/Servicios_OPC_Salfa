@@ -30,6 +30,9 @@ namespace CatalogSalfa.Entities
         public string status { get; set; }
         public string ldapGuid { get; set; }
         public int companyId { get; set; }
+        public string mobile { get; set; }
+        public string phone { get; set; }
+        public string alternateEmail { get; set; }
         //public List<UserSetting> userSettings { get; set; }
         //public List<UserProduct> userProducts { get; set; }
         public bool isInspectionManager { get; set; }

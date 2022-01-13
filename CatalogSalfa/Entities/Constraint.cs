@@ -14,13 +14,14 @@ namespace CatalogSalfa.Entities
         public DateTime updateDate { get; set; }
     }
 
+    /*
     public class TaskConstraint
     {
         public int constraintId { get; set; }
         public int workManagerTaskId { get; set; }
         public int taskConstraintId { get; set; }
         public DateTime updateDate { get; set; }
-    }
+    }*/
 
     public class Constraint
     {
@@ -35,7 +36,7 @@ namespace CatalogSalfa.Entities
         public string workspaceCode { get; set; }
         public int constraintId { get; set; }
         public int projectCompanyId { get; set; }
-        public List<TaskConstraint> taskConstraints { get; set; }
+        //public List<TaskConstraint> taskConstraints { get; set; }
         public DateTime dateIdentified { get; set; }
         public DateTime dateNeeded { get; set; }
         public DateTime promisedDate { get; set; }

@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:16458",
+      "applicationUrl": "http://supermasivo.salfagestion.cl:16458",
       "sslPort": 44320
     }
   },
@@ -14,7 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7282;http://localhost:5010",
+      "applicationUrl": "https://supermasivo.salfagestion.cl:7282;http://supermasivo.salfagestion.cl:5010",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
